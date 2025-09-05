@@ -1,3 +1,4 @@
+
 npm依赖包安装：
 ```
 需要在当前目录下安装以下包，然后将安装完成的node_modules 移动到上级目录
@@ -13,12 +14,17 @@ npm install --save-dev @types/node
 ```
 python依赖包安装，在conda环境下安装
 ```
+python -m pip install uv
+
 pip install https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/mcp/paddleocr_mcp/releases/v0.2.0/paddleocr_mcp-0.2.0-py3-none-any.whl
 python -m pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
 python -m pip install paddleocr
-python -m pip install uv
-```
 
+###服务器端启动paddlecor服务
+```
+pip install "paddlex[base]"
+paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 32004
+```
 **需要在安装以上依赖的conda环境下启动qwen**
 
 prompt设计
