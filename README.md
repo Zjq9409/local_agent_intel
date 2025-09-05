@@ -11,7 +11,7 @@ npm install
 npm install -g .
 ```
 ### 配置qwen-code的配置文件
-将settings.json复制到C:\Users\${USER}\.qwen目录下
+将settings.json复制到C:\Users\\${USER}\\.qwen目录下
 ### 启动qwencode
 新建一个worspace目录，将.env文件放置到该目录下,在该目录下命令行输入qwen即可启动
 
