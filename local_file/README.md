@@ -1,7 +1,7 @@
 
-npm依赖包安装：
+客户端依赖包安装：
 ```
-需要在当前目录下安装以下包，然后将安装完成的node_modules 移动到上级目录
+1. 需要在当前目录下安装以下包，然后将安装完成的node_modules 移动到上级目录
 npm install @modelcontextprotocol/sdk
 npm install  node-fetch
 npm install https-proxy-agent
@@ -11,21 +11,24 @@ npm install minimatch
 npm install diff
 npm install  mammoth
 npm install --save-dev @types/node
-```
-python依赖包安装，在conda环境下安装
-```
-python -m pip install uv
 
+2. python依赖包安装，在conda环境下安装
+python -m pip install uv
+```
+PaddleOCR MCP服务安装步骤：
+```
+1. 客户端python依赖安装
 pip install https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/mcp/paddleocr_mcp/releases/v0.2.0/paddleocr_mcp-0.2.0-py3-none-any.whl
 python -m pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
 python -m pip install paddleocr
 
-###服务器端启动paddlecor服务
-```
+2. 服务器conda环境安装python依赖并启动PaddleOCR服务
+python -m pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
 pip install "paddlex[base]"
 paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 32004
 ```
-**需要在安装以上依赖的conda环境下启动qwen**
+
+**客户端需要在安装以上依赖的conda环境下启动qwen**
 
 prompt设计
 - 调用PaddleOCR识别MCP
