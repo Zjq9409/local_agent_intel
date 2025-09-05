@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "markmap": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@jinzcdev/markmap-mcp-server"
+      ],
+      "env": {
+        "MARKMAP_DIR": "./filedir"
+      }
+    }
+  },
+  "selectedAuthType": "openai",
+  "hasSeenIdeIntegrationNudge": true,
+  "vimMode": false
+}
