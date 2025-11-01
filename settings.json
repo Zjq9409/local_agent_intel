@@ -1,22 +1,93 @@
 {
+  "ide": {
+    "hasSeenNudge": true,
+    "enabled": true
+  },
   "mcpServers": {
-    "markmap": {
-      "type": "stdio",
-      "command": "npx",
+    "filesystem": {
+      "command": "node",
       "args": [
-        "-y",
-        "@jinzcdev/markmap-mcp-server"
+        "./source_files/file/index.js",
+        "./"
+      ]
+    },
+    "chatppt": {
+      "command": "node",
+      "args": [
+        "./source_files/ppt.js"
       ],
       "env": {
-        "MARKMAP_DIR": "./filedir"
+        "API_KEY": "Yoo-AI.2014.BtyDztYKBtPtnPW6FhakA6rRr5BfXnqe.WdN2mxDZEas8gR9pWSxzkT9zAnrMNV7y/ybKC3hrncRhwuV95GPbzwJr8EHXCtR3R.1744689322.0"
+      }
+    },
+    "quickchart-server": {
+      "command": "node",
+      "args": [
+        "./source_files/chart.js"
+      ]
+    },
+    "markmap": {
+      "command": "node",
+      "args": [
+        "./source_files/markmap/build/index.js"
+      ],
+      "env": {
+        "MARKMAP_DIR": "./"
       }
     },
     "word-document-server": {
-      "command": "uvx",
-      "args": ["--from", "office-word-mcp-server", "word_mcp_server"]
+      "command": "python",
+      "args": [
+        "./source_files/Office-Word-MCP-Server/word_mcp_server.py"
+      ]
+    }, 
+    "paddleocr-ocr": {
+      "command": "paddleocr_mcp",
+      "args": [],
+      "env": {
+        "PADDLEOCR_MCP_PIPELINE": "PP-StructureV3",
+        "PADDLEOCR_MCP_PPOCR_SOURCE": "self_hosted",
+        "PADDLEOCR_MCP_SERVER_URL": "http://172.16.120.111:32004"
+      }
+    },
+    "xiaohongshu": {
+      "httpUrl": "http://10.239.132.195:18060/mcp",
+      "timeout": 30000
+    },
+     "amap-maps": {
+      "command": "node",
+      "args": [
+        "./source_files/map/index.js"
+      ],
+      "env": {
+        "AMAP_MAPS_API_KEY": "0408a2de27b7bad53b175f6f51d7e20b",
+        "NODE_OPTIONS": ""
+      }
+    },
+    "excel-mcp-server": {
+      "command": "node",
+      "args": [
+        "./source_files/excel-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "LOG_PATH": "./",
+        "CACHE_MAX_AGE": "1",
+        "CACHE_CLEANUP_INTERVAL": "4",
+        "LOG_RETENTION_DAYS": "7",
+        "LOG_CLEANUP_INTERVAL": "24"
+      }
     }
   },
-  "selectedAuthType": "openai",
-  "hasSeenIdeIntegrationNudge": true,
-  "vimMode": false
+  "ui": {
+    "theme": "Qwen Dark"
+  },
+  "model": {
+    "name": "ui-tars"
+  },
+  "$version": 2,
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  }
 }
