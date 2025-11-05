@@ -11,9 +11,8 @@ paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 320
 ```
 
 3. 在 all_in_one 文件夹下启动 qwen，启动成功可以输入以下prompt：
-4. 
+   
 prompt设计
-
 - 调用PaddleOCR识别MCP
 ```
 帮我把这个图片 demo.png 变成可编辑的markdown格式，保留原来的格式，使用filesystem__write_file工具保存文件。
