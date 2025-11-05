@@ -10,6 +10,8 @@ pip install "paddlex[base]"
 paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 32004
 ```
 
+3. 在 all_in_one 文件夹下启动 qwen，启动成功可以输入以下prompt：
+4. 
 prompt设计
 
 - 调用PaddleOCR识别MCP
@@ -27,7 +29,8 @@ prompt设计
 对比中国和德国最近五年政府补贴金额数量。
 将以上中国和德国政府补贴数据绘制成折线图。             ######（需要联网） 
 ```
-
+```
 1. 使用WebFetch工具汇总中考历史考点并绘制思维导图
 2. 总结中考历史考点并绘制思维导图
 3. 总结中考语文文学尝试知识点并绘制思维导图
+```
