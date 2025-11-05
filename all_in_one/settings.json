@@ -3,6 +3,9 @@
     "hasSeenNudge": true,
     "enabled": true
   },
+   "tools": {
+    "core": ["shell"]
+  },
   "mcpServers": {
     "filesystem": {
       "command": "node",
@@ -50,11 +53,7 @@
         "PADDLEOCR_MCP_SERVER_URL": "http://172.16.120.111:32004"
       }
     },
-    "xiaohongshu": {
-      "httpUrl": "http://10.239.132.195:18060/mcp",
-      "timeout": 30000
-    },
-     "amap-maps": {
+    "amap-maps": {
       "command": "node",
       "args": [
         "./source_files/map/index.js"
