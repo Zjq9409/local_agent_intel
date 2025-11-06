@@ -48,7 +48,7 @@
       ]
     }, 
     "paddleocr-ocr": {
-      "command": "paddleocr_mcp",
+      "command": "python -m paddleocr_mcp",
       "args": [],
       "env": {
         "PADDLEOCR_MCP_PIPELINE": "PP-StructureV3",
