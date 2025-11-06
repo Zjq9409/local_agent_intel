@@ -43,22 +43,21 @@ if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
 Write-Host "------------------------------------------------"
 
 # -----------------------------
-# Step 3: Install npm local dependencies
+# Step 3: Set project directory to current directory
 # -----------------------------
-$projectDir = Read-Host "Enter the full path of your project directory"
-if (-not (Test-Path $projectDir)) {
-    Write-Host "Project directory does not exist. Exiting..."
-    exit 1
-}
+$projectDir = Get-Location
+Write-Host "Using current directory as project directory: $projectDir"
 
-Set-Location $projectDir
+# -----------------------------
+# Step 4: Install npm local dependencies
+# -----------------------------
 Write-Host "Installing npm dependencies in $projectDir ..."
 npm install @modelcontextprotocol/sdk node-fetch https-proxy-agent axios getenv minimatch diff mammoth minimist pino markmap-lib markmap-render open xlsx --save --save-dev @types/node
 Write-Host "npm dependencies installed."
 Write-Host "------------------------------------------------"
 
 # -----------------------------
-# Step 4: Install Python dependencies
+# Step 5: Install Python dependencies
 # -----------------------------
 if (Test-Path "$projectDir\requirements.txt") {
     Write-Host "Installing Python dependencies from requirements.txt ..."
@@ -71,7 +70,7 @@ if (Test-Path "$projectDir\requirements.txt") {
 Write-Host "------------------------------------------------"
 
 # -----------------------------
-# Step 5: Install Qwen CLI globally
+# Step 6: Install Qwen CLI globally
 # -----------------------------
 Write-Host "Installing Qwen CLI globally via npm ..."
 npm install -g @qwen-code/qwen-code@latest
