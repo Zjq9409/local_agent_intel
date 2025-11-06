@@ -72,15 +72,21 @@ Write-Host "------------------------------------------------"
 # -----------------------------
 # Step 6: Install Qwen CLI globally
 # -----------------------------
-Write-Host "Installing Qwen CLI globally via npm ..."
-npm install -g @qwen-code/qwen-code@latest
+# -----------------------------
+# Step 6: Install Qwen CLI globally (only if not installed)
+# -----------------------------
 if (Get-Command qwen-code -ErrorAction SilentlyContinue) {
-    Write-Host "Qwen CLI installed successfully. Version: $(qwen-code --version)"
+    Write-Host "Qwen CLI is already installed. Skipping installation."
+    Write-Host "Version: $(qwen-code --version)"
 } else {
-    Write-Host "Qwen CLI installation failed. Please check npm global path."
+    Write-Host "Installing Qwen CLI globally via npm ..."
+    npm install -g @qwen-code/qwen-code@latest
+    if (Get-Command qwen-code -ErrorAction SilentlyContinue) {
+        Write-Host "Qwen CLI installed successfully. Version: $(qwen-code --version)"
+    } else {
+        Write-Host "Qwen CLI installation failed. Please check npm global path."
+    }
 }
-
-Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 7: Copy settings.json to .qwen directory (ask user first)
