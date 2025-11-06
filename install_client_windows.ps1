@@ -70,9 +70,6 @@ if (Test-Path "$projectDir\requirements.txt") {
 Write-Host "------------------------------------------------"
 
 # -----------------------------
-# Step 6: Install Qwen CLI globally
-# -----------------------------
-# -----------------------------
 # Step 6: Install Qwen CLI globally (only if not installed)
 # -----------------------------
 if (Get-Command qwen-code -ErrorAction SilentlyContinue) {
