@@ -2,86 +2,86 @@
 # Qwen Client Auto Install Script (Windows)
 # ----------------------------------------
 
-# Set execution policy temporarily
+# Temporarily set execution policy
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-Write-Host "📦 Starting Qwen client automated installation..."
-Write-Host "──────────────────────────────────────────────"
+Write-Host "Starting Qwen client automated installation..."
+Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 1: Check and install Node.js LTS
 # -----------------------------
 if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
-    Write-Host "❌ npm not found. Installing Node.js LTS via WinGet..."
+    Write-Host "npm not found. Installing Node.js LTS via WinGet..."
     winget install OpenJS.NodeJS.LTS -e --silent
     if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
-        Write-Host "❌ Node.js installation failed. Please check WinGet availability."
+        Write-Host "Node.js installation failed. Please check WinGet availability."
         exit 1
     }
-    Write-Host "✅ Node.js installed successfully. Version: $(node -v)"
+    Write-Host "Node.js installed successfully. Version: $(node -v)"
 } else {
-    Write-Host "✅ npm detected. Version: $(npm -v)"
+    Write-Host "npm detected. Version: $(npm -v)"
 }
 
-Write-Host "──────────────────────────────────────────────"
+Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 2: Check and install Python 3
 # -----------------------------
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
-    Write-Host "❌ Python not found. Installing Python 3 via WinGet..."
+    Write-Host "Python not found. Installing Python 3 via WinGet..."
     winget install Python.Python.3 -e --silent
     if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
-        Write-Host "❌ Python installation failed. Please check WinGet availability."
+        Write-Host "Python installation failed. Please check WinGet availability."
         exit 1
     }
-    Write-Host "✅ Python installed successfully. Version: $(python --version)"
+    Write-Host "Python installed successfully. Version: $(python --version)"
 } else {
-    Write-Host "✅ Python detected. Version: $(python --version)"
+    Write-Host "Python detected. Version: $(python --version)"
 }
 
-Write-Host "──────────────────────────────────────────────"
+Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 3: Install npm local dependencies
 # -----------------------------
 $projectDir = Read-Host "Enter the full path of your project directory"
 if (-not (Test-Path $projectDir)) {
-    Write-Host "❌ Project directory does not exist. Exiting..."
+    Write-Host "Project directory does not exist. Exiting..."
     exit 1
 }
 
 Set-Location $projectDir
-Write-Host "🚀 Installing npm dependencies in $projectDir ..."
+Write-Host "Installing npm dependencies in $projectDir ..."
 npm install @modelcontextprotocol/sdk node-fetch https-proxy-agent axios getenv minimatch diff mammoth minimist pino markmap-lib markmap-render open xlsx --save --save-dev @types/node
-Write-Host "✅ npm dependencies installed."
-Write-Host "──────────────────────────────────────────────"
+Write-Host "npm dependencies installed."
+Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 4: Install Python dependencies
 # -----------------------------
 if (Test-Path "$projectDir\requirements.txt") {
-    Write-Host "🐍 Installing Python dependencies from requirements.txt ..."
+    Write-Host "Installing Python dependencies from requirements.txt ..."
     pip install -r "$projectDir\requirements.txt"
-    Write-Host "✅ Python dependencies installed."
+    Write-Host "Python dependencies installed."
 } else {
-    Write-Host "⚠️ requirements.txt not found. Skipping Python dependencies."
+    Write-Host "requirements.txt not found. Skipping Python dependencies."
 }
 
-Write-Host "──────────────────────────────────────────────"
+Write-Host "------------------------------------------------"
 
 # -----------------------------
 # Step 5: Install Qwen CLI globally
 # -----------------------------
-Write-Host "🌐 Installing Qwen CLI globally via npm ..."
+Write-Host "Installing Qwen CLI globally via npm ..."
 npm install -g @qwen-code/qwen-code@latest
 if (Get-Command qwen-code -ErrorAction SilentlyContinue) {
-    Write-Host "✅ Qwen CLI installed successfully. Version: $(qwen-code --version)"
+    Write-Host "Qwen CLI installed successfully. Version: $(qwen-code --version)"
 } else {
-    Write-Host "⚠️ Qwen CLI installation failed. Please check npm global path."
+    Write-Host "Qwen CLI installation failed. Please check npm global path."
 }
 
-Write-Host "──────────────────────────────────────────────"
-Write-Host "🎉 Qwen client environment setup complete!"
-Write-Host "🚀 You can now run: qwen-code"
+Write-Host "------------------------------------------------"
+Write-Host "Qwen client environment setup complete!"
+Write-Host "You can now run: qwen-code"
 
