@@ -1,5 +1,5 @@
 # ----------------------------------------
-# Qwen Client Auto Install Script (Windows)
+# Qwen Client Full Auto Install Script (Windows)
 # ----------------------------------------
 
 # Temporarily set execution policy
@@ -78,6 +78,31 @@ if (Get-Command qwen-code -ErrorAction SilentlyContinue) {
     Write-Host "Qwen CLI installed successfully. Version: $(qwen-code --version)"
 } else {
     Write-Host "Qwen CLI installation failed. Please check npm global path."
+}
+
+Write-Host "------------------------------------------------"
+
+# -----------------------------
+# Step 7: Copy settings.json to .qwen directory (ask user first)
+# -----------------------------
+$qwenDir = Join-Path $env:USERPROFILE ".qwen"
+
+if (-not (Test-Path $qwenDir)) {
+    Write-Host "Creating .qwen directory at $qwenDir ..."
+    New-Item -ItemType Directory -Path $qwenDir | Out-Null
+}
+
+$settingsFile = Join-Path $projectDir "settings.json"
+if (Test-Path $settingsFile) {
+    $copyChoice = Read-Host "Do you want to copy settings.json to $qwenDir? (Y/N)"
+    if ($copyChoice -match "^[Yy]") {
+        Copy-Item -Path $settingsFile -Destination $qwenDir -Force
+        Write-Host "settings.json copied to $qwenDir"
+    } else {
+        Write-Host "Skipping copy of settings.json."
+    }
+} else {
+    Write-Host "settings.json not found in current directory. Skipping copy."
 }
 
 Write-Host "------------------------------------------------"
