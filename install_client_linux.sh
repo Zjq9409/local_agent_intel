@@ -122,5 +122,5 @@ echo "当前 .qwen 目录内容："
 ls -al "$QWEN_DIR"
 
 echo "环境初始化完成！Qwen 客户端依赖与配置已准备就绪。"
-echo "你现在可以直接运行： qwen-code"
+echo "你现在可以转到 cli_agent 目录下来运行： qwen"
 

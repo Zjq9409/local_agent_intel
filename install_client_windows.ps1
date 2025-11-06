@@ -113,5 +113,5 @@ if (Test-Path $settingsFile) {
 
 Write-Host "------------------------------------------------"
 Write-Host "Qwen client environment setup complete!"
-Write-Host "You can now run: qwen-code"
+Write-Host "Now You can goto cli_agent director to run: qwen"
 
