@@ -3,8 +3,11 @@
     "hasSeenNudge": true,
     "enabled": true
   },
-   "tools": {
-    "core": ["shell"]
+  "tools": {
+    "core": [
+      "shell"
+    ],
+    "autoAccept": true
   },
   "mcpServers": {
     "filesystem": {
@@ -32,7 +35,7 @@
     "markmap": {
       "command": "node",
       "args": [
-        "./source_files/markmap/build/index.js"
+        "./source_files/markmap/index.js"
       ],
       "env": {
         "MARKMAP_DIR": "./"
@@ -41,7 +44,7 @@
     "word-document-server": {
       "command": "python",
       "args": [
-        "./source_files/word-mcp-server/word_mcp_server.py"
+        "./source_files/Office-Word-MCP-Server/word_mcp_server.py"
       ]
     }, 
     "paddleocr-ocr": {
@@ -77,16 +80,17 @@
       }
     }
   },
-  "ui": {
-    "theme": "Qwen Dark"
-  },
   "model": {
-    "name": "ui-tars"
+    "name": "ui-tars",
+    "skipLoopDetection": true
   },
   "$version": 2,
   "security": {
     "auth": {
       "selectedType": "openai"
     }
+  },
+  "general": {
+    "disableAutoUpdate": true
   }
 }

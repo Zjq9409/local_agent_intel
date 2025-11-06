@@ -40,7 +40,7 @@ echo "✅ npm 依赖安装完成"
 echo "──────────────────────────────────────────────"
 
 ###############################################
-# 三、安装 Python 依赖（requirements.txt）
+# 三、安装 Python 依赖
 ###############################################
 if [ -f "requirements.txt" ]; then
   echo "🐍 检测到 requirements.txt，开始安装 Python 依赖..."
@@ -59,70 +59,30 @@ echo "────────────────────────�
 ###############################################
 # 四、查找 Qwen 全局配置目录
 ###############################################
-echo "🔍 正在查找 Qwen 全局配置目录 (.qwen)..."
-
-OS=$(uname | tr '[:upper:]' '[:lower:]')
-
-if [ -n "$QWEN_HOME" ]; then
-  QWEN_DIR="$QWEN_HOME"
-else
-  if [[ "$OS" == *"mingw"* || "$OS" == *"msys"* || "$OS" == *"cygwin"* ]]; then
-    # Windows (Git Bash / WSL)
-    QWEN_DIR="$USERPROFILE\\.qwen"
-  else
-    # Linux / macOS
-    QWEN_DIR="$HOME/.qwen"
-  fi
-fi
+QWEN_DIR="${QWEN_HOME:-$HOME/.qwen}"
 
 echo "📁 Qwen 配置目录应位于：$QWEN_DIR"
 
-if [ -d "$QWEN_DIR" ]; then
-  echo "✅ 已找到 .qwen 目录。"
-else
-  echo "⚠️ 未找到 .qwen 目录。"
+if [ ! -d "$QWEN_DIR" ]; then
   read -p "是否要创建该目录？(y/n): " yn
-  case $yn in
-    [Yy]* )
-      mkdir -p "$QWEN_DIR"
-      echo "📂 已创建：$QWEN_DIR"
-      ;;
-    * )
-      echo "🚫 已取消创建。"
-      ;;
-  esac
+  [[ $yn =~ [Yy] ]] && mkdir -p "$QWEN_DIR" && echo "📂 已创建：$QWEN_DIR"
 fi
 
 echo "──────────────────────────────────────────────"
 
 ###############################################
-# 五、提示复制 settings.json
+# 五、拷贝 settings.json
 ###############################################
 if [ -f "settings.json" ]; then
-  echo "⚙️ 检测到当前目录下存在 settings.json 文件。"
   read -p "是否要将 settings.json 拷贝到 $QWEN_DIR ？(y/n): " copyyn
-  case $copyyn in
-    [Yy]* )
-      cp -f "settings.json" "$QWEN_DIR/"
-      echo "✅ 已复制 settings.json 到：$QWEN_DIR"
-      ;;
-    * )
-      echo "🚫 已跳过复制 settings.json。"
-      ;;
-  esac
+  [[ $copyyn =~ [Yy] ]] && cp -f "settings.json" "$QWEN_DIR/" && echo "✅ 已复制 settings.json"
 else
-  echo "⚠️ 当前目录下未找到 settings.json，请手动将配置文件放入 $QWEN_DIR"
+  echo "⚠️ 未找到 settings.json，请手动复制到 $QWEN_DIR"
 fi
 
 echo "──────────────────────────────────────────────"
-
-###############################################
-# 六、显示结果
-###############################################
-if [ -d "$QWEN_DIR" ]; then
-  echo "📦 当前 .qwen 目录内容："
-  ls -al "$QWEN_DIR" 2>/dev/null || dir "$QWEN_DIR"
-fi
+echo "📦 当前 .qwen 目录内容："
+ls -al "$QWEN_DIR"
 
 echo "🎉 环境初始化完成！Qwen 客户端依赖与配置已准备就绪。"
 
