@@ -5,9 +5,11 @@
   },
   "tools": {
     "core": [
-      "shell"
-    ],
-    "autoAccept": true
+      "run_shell_command",
+      "web_fetch",
+      "web_search",
+      "save_memory"
+    ]
   },
   "mcpServers": {
     "filesystem": {
@@ -20,7 +22,7 @@
     "chatppt": {
       "command": "node",
       "args": [
-        "./source_files/ppt/ppt.js"
+        "./source_files/ppt.js"
       ],
       "env": {
         "API_KEY": "Yoo-AI.2014.BtyDztYKBtPtnPW6FhakA6rRr5BfXnqe.WdN2mxDZEas8gR9pWSxzkT9zAnrMNV7y/ybKC3hrncRhwuV95GPbzwJr8EHXCtR3R.1744689322.0"
@@ -29,7 +31,7 @@
     "quickchart-server": {
       "command": "node",
       "args": [
-        "./source_files/chart/chart.js"
+        "./source_files/chart.js"
       ]
     },
     "markmap": {
@@ -44,11 +46,11 @@
     "word-document-server": {
       "command": "python",
       "args": [
-        "./source_files/word-mcp-server/word_mcp_server.py"
+        "./source_files/Office-Word-MCP-Server/word_mcp_server.py"
       ]
-    }, 
+    },
     "paddleocr-ocr": {
-      "command": "python -m paddleocr_mcp",
+      "command": "paddleocr_mcp",
       "args": [],
       "env": {
         "PADDLEOCR_MCP_PIPELINE": "PP-StructureV3",
@@ -82,7 +84,7 @@
   },
   "model": {
     "name": "ui-tars",
-    "skipLoopDetection": true
+    "skipLoopDetection": false
   },
   "$version": 2,
   "security": {
@@ -92,5 +94,9 @@
   },
   "general": {
     "disableAutoUpdate": true
-  }
+  },
+  "output": {
+    "format": "text"
+  },
+  "ui": {}
 }
