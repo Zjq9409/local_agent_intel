@@ -18,7 +18,7 @@ paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 320
 帮我把这个图片 demo.png 变成可编辑的markdown格式保存到当前目录下，保留原来的格式。
 以上md文件不需要使用 LaTeX 格式保存。
 ```
--使用WORD 制作PPT
+- 使用WORD 制作PPT
 ```
 根据 24.10.12_Gaudi2D-test_report.docx文档制作1份PPT。     ######（需要联网）
 ```
