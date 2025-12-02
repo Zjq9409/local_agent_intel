@@ -46,7 +46,7 @@
     "word-document-server": {
       "command": "python",
       "args": [
-        "./source_files/Office-Word-MCP-Server/word_mcp_server.py"
+        "./source_files/word-mcp-server/word_mcp_server.py"
       ]
     },
     "paddleocr-ocr": {
