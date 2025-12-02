@@ -31,7 +31,7 @@
     "quickchart-server": {
       "command": "node",
       "args": [
-        "./source_files/chart.js"
+        "./source_files/chart/chart.js"
       ]
     },
     "markmap": {
