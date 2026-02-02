@@ -4,12 +4,14 @@
    ./install_client_windows.ps1     #windows平台
 ```
 
-2. 在服务器端安装PaddleOCR的MCP（可选，不用OCR则可以不用安装）
+2. 在服务器端安装PaddleOCR的MCP（可选，不用OCR则可以不用安装），https://github.com/PaddlePaddle/PaddleOCR/blob/main/docs/version3.x/deployment/serving.md
 ```
 python -m pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
 pip install "paddlex[base]"
+paddlex --install serving
 paddlex --serve --pipeline /home/intel/PP-StructureV3.yaml --use_hpip --port 32004
 ```
+PaddleOCR mcp 可以参考官网安装链接： https://github.com/PaddlePaddle/PaddleOCR/blob/main/docs/version3.x/deployment/mcp_server.md#%E6%A8%A1%E5%BC%8F%E5%9B%9B%E8%87%AA%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1
 
 3. 到cli_agent 目录下执行qwen 或者 qwen --yolo（执行工具不需要用户确认） 命令，启动成功可以输入以下prompt:
    
