@@ -6,7 +6,7 @@
 
 2. 在服务器端安装PaddleOCR的MCP（可选，不用OCR则可以不用安装），https://github.com/PaddlePaddle/PaddleOCR/blob/main/docs/version3.x/deployment/serving.md
 ```
-python -m pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+python -m pip install paddlepaddle
 pip install "paddlex[base]"
 paddlex --install serving
 paddlex --install hpi-cpu
